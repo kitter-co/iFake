@@ -1,5 +1,4 @@
 const { invoke } = window.__TAURI__.core
-
 let greetInputEl
 let greetMsgEl
 
@@ -15,4 +14,5 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault()
     greet()
   })
+
 })

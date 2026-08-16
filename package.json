@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.11.4"
+  },
+  "dependencies": {
+    "smplr": "^1.0.0"
   }
 }
