@@ -1,3 +1,34 @@
+@font-face {
+  font-family: Inkpen2ChordsStd;
+  src: url("./fonts/Inkpen2ChordsStd.otf");
+}
+
+@font-face {
+  font-family: Inkpen2MetronomeStd;
+  src: url("./fonts/Inkpen2MetronomeStd.otf");
+}
+
+/* this is the normal text */
+@font-face {
+  font-family: Inkpen2ScriptStd;
+  src: url("./fonts/Inkpen2ScriptStd.otf");
+}
+
+@font-face {
+  font-family: Inkpen2SpecialStd;
+  src: url("./fonts/Inkpen2SpecialStd.otf");
+}
+
+@font-face {
+  font-family: Inkpen2Std;
+  src: url("./fonts/Inkpen2Std.otf");
+}
+
+@font-face {
+  font-family: Inkpen2TextStd;
+  src: url("./fonts/Inkpen2TextStd.otf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +42,15 @@
 }
 
 body, html {
-  font-family: system-ui;
+  font-family: Inkpen2ScriptStd, system-ui, sans-serif;
   background: var(--color-0);
   height: 100%;
   overflow: hidden;
   color: var(--color-10);
+}
+
+body {
+  display: flex;
 }
 
 :root {
