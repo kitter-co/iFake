@@ -19,6 +19,7 @@
   src: url("./fonts/Inkpen2SpecialStd.otf");
 }
 
+/* i think this is how we'll want to render notes, rests, clefs, and key signatures */
 @font-face {
   font-family: Inkpen2Std;
   src: url("./fonts/Inkpen2Std.otf");
