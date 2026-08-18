@@ -8,14 +8,33 @@
   </head>
 
   <body>
+    <div id="settings-menu" class="hidden" style="display: none;">
+      <h2 id="settings-header">
+        Settings
+        <button id="close-settings">Close</button>
+      </h2>
+
+      <form>
+        <h3>Chord Display Settings</h3>
+      </form>
+    </div>
+
     <div id="keypad">
       <h2>Input Notes</h2>
     </div>
+    <input type="text" id="input">
+    <button id="go">
+      Go
+    </button>
+    <output id="output"></output>
 
     <button id="sound-btn" type="button">
       Play Sound
     </button>
 
+
+    <script src="./settings.js"></script>
+    <script type="module" src="/shortcuts.js"></script>
     <script src="./chord_symbols.js"></script>
     <script type="module" src="./sounds.js"></script>
   </body>

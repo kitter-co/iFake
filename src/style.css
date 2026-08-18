@@ -47,7 +47,8 @@ body, html {
   background: var(--color-0);
   height: 100%;
   overflow: hidden;
-  color: var(--color-10);
+  color: var(--color-9);
+  font-size: 18px;
 }
 
 body {
@@ -55,17 +56,18 @@ body {
 }
 
 :root {
-  --color-10: #fafafa;
-  --color-9: #f4f4f5;
-  --color-8: #e5e5e6;
-  --color-7: #d5d5d7;
-  --color-6: #a4a4a7;
-  --color-5: #747477;
-  --color-4: #555558;
-  --color-3: #414144;
-  --color-2: #282829;
-  --color-1: #131314;
-  --color-0: #0a0a0a;
+  --color-9: #fafafa;
+  --color-8: #f4f4f5;
+  --color-7: #e5e5e6;
+  --color-6: #d5d5d7;
+  --color-5: #a4a4a7;
+  --color-4: #747477;
+  --color-3: #555558;
+  --color-2: #414144;
+  --color-1: #282829;
+  --color-0: #131314;
+
+  --accent: #f03c24;
 }
 
 #keypad {
@@ -80,6 +82,7 @@ body {
 }
 
 h2 {
+  font-size: 1.25em;
   height: 32px;
   display: flex;
   align-items: center;
@@ -104,4 +107,83 @@ button {
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+#settings-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--color-0);
+  z-index: 1000;
+  padding: 32px;
+}
+
+#settings-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#close-settings {
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
+}
+
+#close-settings:hover {
+  background: var(--color-1);
+}
+
+#close-settings:active {
+  background: var(--color-2);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+fieldset {
+  display: flex;
+  gap: 8px;
+  background: var(--color-1);
+  padding: 16px;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+fieldset > span {
+  display: block;
+  width: 100%;
+}
+
+fieldset > label {
+  position: relative;
+  padding: 4px 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  height: max-content;
+  cursor: pointer;
+  z-index: 2;
+}
+
+fieldset > label > input {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  cursor: pointer;
+}
+
+fieldset > label > input:hover, fieldset > label:hover {
+  background: var(--color-2);
+}
+
+fieldset > label > input:active, fieldset > label:active {
+  background: var(--color-3);
+}
+
+fieldset > label > input:checked {
+  background: var(--accent);
 }

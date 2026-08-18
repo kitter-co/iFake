@@ -10,6 +10,7 @@
     "@tauri-apps/cli": "^2.11.4"
   },
   "dependencies": {
+    "@tauri-apps/plugin-global-shortcut": "^2.3.2",
     "smplr": "^1.0.0"
   }
 }
