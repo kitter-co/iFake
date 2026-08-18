@@ -1,6 +1,8 @@
+import { playChord } from './sounds.js'
+
 let pos = 0
 let splitPos = [0, 0]
-let bpm = 60
+let bpm = 40
 let ts = 4
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
@@ -15,18 +17,20 @@ class chordPlayer {
     let chordPos = pos[0] % this.changes.length
     let notePos = Math.floor(pos[1])
     let chord
-
-    if (notePos % 2 === 0) {
-      chord = this.changes[chordPos][notePos / 2]
-    }
-    if (chord != undefined) {
-      this.chord = chord
+    if (this.changes[chordPos].length > 0) {
+      if (notePos % 2 === 0) {
+        chord = this.changes[chordPos][notePos / 2]
+      }
+      if (chord != undefined) {
+        this.chord = chord
+      }
     }
     console.log(this.chord)
+    playChord(this.chord)
   }
 }
 
-const chords = new chordPlayer([["a"], ["b", "c"]])
+const chords = new chordPlayer([["Bb7"], ["G7"], ["C7", "F7"], ["Bb7", "F7"], ["Bb7"], ["G7"], ["C7"], ["F7"], ["Bb7"], [], ["Eb7"], ["Eo7"], ["Bb7"], ["G7"], ["C7", "F7"], ["Bb7", "F7"]])
 
 async function startEngine() {
   while (true) {

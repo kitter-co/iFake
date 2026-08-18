@@ -82,7 +82,7 @@ function getChordType(chordSymbol) {
   return chordSymbol;
 }
 
-function playChord(symbol) {
+export function playChord(symbol) {
   let rootName;
   let chordSymbol;
 
