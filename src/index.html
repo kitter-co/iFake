@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,29 +8,71 @@
   </head>
 
   <body>
-    <div id="settings-menu" class="hidden" style="display: none;">
-      <h2 id="settings-header">
+    <header data-tauri-drag-region>
+      <button id="open-settings" class="icon-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M237.94,107.21a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A111.92,111.92,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.63a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+      </button>
+      <button id="toggle-sidebar" class="icon-button open">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H80V200H40ZM216,200H96V56H216V200Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H88V56H216V200Z"></path></svg>
+      </button>
+    </header>
+    <div id="settings-menu" class="hidden">
+      <!-- <h2 id="settings-header">
         Settings
-        <button id="close-settings">Close</button>
-      </h2>
-
+      </h2> -->
+      <div id="chord-examples"></div>
       <form>
         <h3>Chord Display Settings</h3>
       </form>
     </div>
+    <main>
+      <div id="main-content">
+        <input type="text" id="input">
+        <button id="go">
+          Go
+        </button>
+        <output id="output"></output>
 
-    <div id="keypad">
+        <button id="sound-btn" type="button">
+          Play Sound
+        </button>
+      </div>
+
+      <div id="sidebar">
+        <div id="controls">
+          <button id="play-pause" class="icon-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M184,64V192a8,8,0,0,1-16,0V64a8,8,0,0,1,16,0Zm40-8a8,8,0,0,0-8,8V192a8,8,0,0,0,16,0V64A8,8,0,0,0,224,56Zm-87.33,58.66L48.48,58.51A15.91,15.91,0,0,0,24,71.85v112.3A15.83,15.83,0,0,0,32.23,198a15.95,15.95,0,0,0,16.25-.53l88.19-56.15a15.8,15.8,0,0,0,0-26.68Z"></path></svg>
+          </button>
+        </div>
+        <div id="controls2">
+          <label for="tempo">
+            <input type="number" id="tempo">
+            Tempo
+          </label>
+          <label id="key">
+            <select id="key">
+              <option value="0">A Major</option>
+              <option value="1">Bb Major</option>
+              <option value="2">B Major</option>
+              <option value="3">C Major</option>
+              <option value="4">C# Major</option>
+              <option value="5">D Major</option>
+              <option value="6">Eb Major</option>
+              <option value="7">E Major</option>
+              <option value="8">F Major</option>
+              <option value="9">F# Major</option>
+              <option value="10">G Major</option>
+              <option value="11">Ab Major</option>
+            </select>
+            Key
+        </div>
+      </div>
+    </main>
+    <!-- <div id="keypad">
       <h2>Input Notes</h2>
-    </div>
-    <input type="text" id="input">
-    <button id="go">
-      Go
-    </button>
-    <output id="output"></output>
-
-    <button id="sound-btn" type="button">
-      Play Sound
-    </button>
+    </div> -->
 
 
     <script src="./settings.js"></script>

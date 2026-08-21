@@ -47,24 +47,103 @@ body, html {
   background: var(--color-0);
   height: 100%;
   overflow: hidden;
-  color: var(--color-9);
+  color: var(--color-10);
   font-size: 18px;
 }
 
 body {
   display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+header {
+  background: var(--color-1);
+  padding: 8px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding-left: 106px; /* 80px is right at the edge of the traffic light */
+  justify-content: end;
+  gap: 8px;
+}
+
+#main-content {
+  flex-grow: 1;
+}
+
+#sidebar {
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  background: var(--color-1);
+  flex-shrink: 0;
+  transition: clip-path 0.2s ease;
+  clip-path: inset(0 0 0 0);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#sidebar.hidden {
+  clip-path: inset(0 0 0 100%);
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+}
+
+#controls2 {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+#controls2 > label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.875em;
+  text-align: center;
+}
+
+select {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  background: var(--color-2);
+  text-align: center;
+  border-radius: 4px;
+}
+
+body:fullscreen header {
+  padding-left: 8px;
 }
 
 :root {
-  --color-9: #fafafa;
-  --color-8: #f4f4f5;
-  --color-7: #e5e5e6;
-  --color-6: #d5d5d7;
-  --color-5: #a4a4a7;
-  --color-4: #747477;
-  --color-3: #555558;
-  --color-2: #414144;
-  --color-1: #282829;
+  --color-10: #fafafa;
+  --color-9: #f3f3f4;
+  --color-8: #e9e9ea;
+  --color-7: #dddddf;
+  --color-6: #d0d0d3;
+  --color-5: #bdbdc0;
+  --color-4: #99999d;
+  --color-3: #6a6a6f;
+  --color-2: #3f3f44;
+  --color-1: #242428;
   --color-0: #131314;
 
   --accent: #f03c24;
@@ -81,6 +160,28 @@ body {
   padding: 8px;
 }
 
+@keyframes outline {
+  0% {
+    outline: 0 solid var(--accent);
+    outline-offset: 0;
+  }
+
+  50% {
+    outline: 8px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  100% {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+:not(input:not([type="radio"])):focus-visible {
+  animation: outline 0.4s ease-out forwards;
+  outline: 0 solid var(--accent);
+}
+
 h2 {
   font-size: 1.25em;
   height: 32px;
@@ -92,14 +193,6 @@ h2 {
   height: 32px;
 }
 
-.keypad-button:hover {
-  background: var(--color-2);
-}
-
-.keypad-button:active {
-  background: var(--color-3);
-}
-
 button {
   display: flex;
   align-items: center;
@@ -109,39 +202,79 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background: var(--color-2);
+}
+
+button:active {
+  background: var(--color-3);
+}
+
+button svg {
+  height: 1.25em;
+  width: 1.25em;
+}
+
+button.icon-button {
+  border-radius: 100px;
+}
+
+#open-settings:not(.close) > svg:last-child {
+  display: none;
+}
+
+#open-settings.close > svg:first-child {
+  display: none;
+}
+
+#toggle-sidebar > svg {
+  transform: scaleX(-1);
+}
+
+#toggle-sidebar:not(.open) > svg:last-child {
+  display: none;
+}
+
+#toggle-sidebar.open > svg:first-child {
+  display: none;
+}
+
 #settings-menu {
   position: fixed;
   inset: 0;
   background: var(--color-0);
-  z-index: 1000;
+  z-index: 90;
   padding: 32px;
+  overflow: auto;
+  padding-top: 0;
+}
+
+#settings-menu.hidden {
+  display: none;
 }
 
 #settings-header {
   position: relative;
   display: flex;
   align-items: center;
+  padding: 8px;
+  padding-left: 32px;
+  height: 56px;
+  margin: 0 -32px;
+  background: var(--color-1);
 }
 
 #close-settings {
   position: absolute;
-  right: 0;
+  right: 8px;
   font-size: 1rem;
-}
-
-#close-settings:hover {
-  background: var(--color-1);
-}
-
-#close-settings:active {
-  background: var(--color-2);
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 fieldset {
@@ -162,7 +295,6 @@ fieldset > label {
   position: relative;
   padding: 4px 12px;
   border-radius: 4px;
-  overflow: hidden;
   height: max-content;
   cursor: pointer;
   z-index: 2;
@@ -174,6 +306,7 @@ fieldset > label > input {
   inset: 0;
   z-index: -1;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 fieldset > label > input:hover, fieldset > label:hover {
@@ -186,4 +319,24 @@ fieldset > label > input:active, fieldset > label:active {
 
 fieldset > label > input:checked {
   background: var(--accent);
+}
+
+#chord-examples {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-0);
+  margin: -16px;
+  padding: 16px;
+  margin-top: 0;
+}
+
+
+
+/* MUSIC RENDERING STYLES */
+.chord-symbol {
+  font-family: Inkpen2ChordsStd, system-ui, sans-serif;
 }
